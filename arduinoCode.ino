@@ -55,7 +55,7 @@ void loop() {
 }
 
 
-void moveRobot(AF_DCMotor motorG, int speedVal)
+void movement(AF_DCMotor motorG, int speedVal)
 {
   motorG.setSpeed(abs(speedVal));
   if (speedVal <= 0) {
@@ -65,7 +65,7 @@ void moveRobot(AF_DCMotor motorG, int speedVal)
     motorG.run(FORWARD);
   }
 }
-
+moveRobot()=movement()
 
 void logic(int mySpeed, int myDir)
 {
