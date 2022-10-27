@@ -58,11 +58,11 @@ void loop() {
 void movement(AF_DCMotor motorG, int speedVal)
 {
   motorG.setSpeed(abs(speedVal));
-  if (speedVal <= 0) {
-    motorG.run(BACKWARD);
+  if (speedVal != 0) {
+    motorG.run(FORWARD);
   }
   else {
-    motorG.run(FORWARD);
+    motorG.run(BACKWARD);
   }
 }
 moveRobot()=movement()
@@ -70,7 +70,7 @@ moveRobot()=movement()
 void logic(int mySpeed, int myDir)
 {
 
-  int speed1 = 255 ;
+  int speed1 = 250 ;
   int speed2 = 150;
 
   if (myDir == 0 && mySpeed > 0) {
@@ -78,15 +78,17 @@ void logic(int mySpeed, int myDir)
     moveRobot(motor2, -speed1);
     moveRobot(motor3, -speed1);
     moveRobot(motor4, -speed1);
+    speed1+=1 
   }
   else if (myDir == 0 && mySpeed < 0) {
     moveRobot(motor1, speed1);
     moveRobot(motor2, speed1);
     moveRobot(motor3, speed1);
     moveRobot(motor4, speed1);
+    speed2+=1
   }
 
-  else if (myDir > 0 && mySpeed == 0 ) {
+  else if (myDir > 0 && mySpeed != 0 ) {
     moveRobot(motor1, -speed1);
     moveRobot(motor2, -speed1);
     moveRobot(motor3, speed1);
